@@ -3,6 +3,7 @@ const path = require ('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = { 
+
 	devtool: "eval-source-map", // Processes slower but maps transpiling 
 	entry: {
     bundle: [ path.join(__dirname, "../src/index.js") ]
@@ -60,7 +61,7 @@ module.exports = {
 
 	      {
 	      	loader: "file-loader",
-	      	exclude: [
+	      	include: [
 	      		/\.html$/,
 	      		/\.(js|jsx)$/,
 	      		/\.scss$/,
@@ -69,7 +70,8 @@ module.exports = {
 	      		/\.gif$/,
 	      		/\.jpe?g$/,
 	      		/\.svg$/,
-	      		/\.png$/
+	      		/\.png$/,
+	      		/\.pdf$/
 	      	],
 	      	options: {
 	      		name: "[name].[ext]"
@@ -77,7 +79,7 @@ module.exports = {
 	      },
 
 	      {
-	      	test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+	      	test: [/\.pdf$/,/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
 	      	loader: "url-loader",
 	      	options: {
 	      		limit: 10000,
